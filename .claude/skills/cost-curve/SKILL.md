@@ -3,7 +3,7 @@ name: cost-curve
 description: "Apply the three-tier cost curve (Python $0 → Haiku ~$0.0001 → Sonnet/Opus ~$0.006) when adding or reviewing LLM call sites in a project. TRIGGER when: user asks to add/integrate an LLM call, build an AI agent/pipeline, connect Claude/Anthropic/OpenAI to a feature, reduce AI costs, review an existing LLM pipeline, add a classifier/scorer/moderator/router, or design a new AI-powered feature. DO NOT TRIGGER for general programming without LLM components, pure UI work, or non-AI tasks."
 ---
 
-> **Политика пользователя 15.09.26: Haiku в новых вызовах не используем.** Tier 2 = Sonnet (`claude-sonnet-5`); где ниже написано Haiku — читать как Sonnet. Действующие боты с Haiku (sunschool card_bot, zoom-ops, discord-ops) без «да» пользователя не трогать.
+> **Политика пользователя 15.09.26: Haiku в новых вызовах не используем.** Tier 2 = Sonnet (`claude-sonnet-5`); где ниже написано Haiku — читать как Sonnet. Уже работающие боты на Haiku без «да» пользователя не трогать.
 
 
 # Cost Curve — трёхуровневый LLM-роутер

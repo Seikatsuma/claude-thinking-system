@@ -26,6 +26,7 @@
 - `scripts/` → `~/scripts/`.
 Файл с тем же именем уже есть и отличается — не затирай молча: оставь версию пользователя, если она его (сравни с резервной копией и историей), или объедини; итог — в INVENTORY.
 Навыки `docx` и `xlsx` (документы Word и таблицы Excel) в набор не входят по лицензии — поставь их из официального https://github.com/anthropics/skills (каталоги `skills/docx`, `skills/xlsx` → `~/.claude/skills/`), если их ещё нет.
+Просмотр страниц документов (`~/scripts/docxkit/check.py`) рисует их браузером: `pip install --user playwright && python3 -m playwright install --with-deps chromium` (или готовый Python с playwright в переменной `DOCXKIT_PYTHON`); проверка — `python3 -c "import playwright"`.
 `chmod +x ~/.claude/hooks/*.sh ~/scripts/*.sh`. Инициализация петли обучения: `python3 ~/.claude/learning-loop/loop.py init`. Папки: `mkdir -p ~/logs ~/vault/topics`.
 
 ## 4. Правила (CLAUDE.md)

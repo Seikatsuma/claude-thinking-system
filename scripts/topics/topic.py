@@ -574,7 +574,7 @@ def cmd_memory_pending(a):
     for o in pend:
         print("%s · тема %s · %s — %s" % (o["id"], o["topic"], o["what"], o["why"]))
     if pend:
-        print("Перенеси в ~/.claude/projects/-home-claude/memory/ по формату памяти, затем topic.py memory-done <id> …")
+        print("Перенеси в память Claude (~/.claude/projects/<проект>/memory/) по формату памяти, затем topic.py memory-done <id> …")
 
 
 def cmd_memory_done(a):
