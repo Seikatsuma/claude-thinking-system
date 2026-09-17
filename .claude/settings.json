@@ -1,10 +1,36 @@
 {
   "hooks": {
+    "SessionStart": [
+      { "matcher": "*", "hooks": [ { "type": "command", "command": "$HOME/.claude/hooks/loop-recall.sh" } ] },
+      { "matcher": "*", "hooks": [ { "type": "command", "command": "$HOME/.claude/hooks/verify-resume.sh" } ] }
+    ],
     "UserPromptSubmit": [
-      { "matcher": "*", "hooks": [ { "type": "command", "command": "$HOME/.claude/hooks/task-framing.sh" } ] }
+      { "matcher": "*", "hooks": [ { "type": "command", "command": "$HOME/.claude/hooks/task-framing.sh" } ] },
+      { "matcher": "*", "hooks": [ { "type": "command", "command": "HOOK_IN=\"$(cat)\" python3 $HOME/.claude/hooks/topic-prompt.py" } ] },
+      { "matcher": "*", "hooks": [ { "type": "command", "command": "HOOK_IN=\"$(cat)\" python3 $HOME/.claude/hooks/context-fill-warn.py" } ] }
     ],
     "PreToolUse": [
-      { "matcher": "Bash", "hooks": [ { "type": "command", "command": "$HOME/.claude/hooks/destructive-bash-guard.sh" } ] }
+      { "matcher": "Bash", "hooks": [ { "type": "command", "command": "$HOME/.claude/hooks/destructive-bash-guard.sh" } ] },
+      { "matcher": "Bash", "hooks": [ { "type": "command", "command": "$HOME/.claude/hooks/heavy-task-nice-guard.sh" } ] },
+      { "matcher": "Bash", "hooks": [ { "type": "command", "command": "$HOME/.claude/hooks/detached-launch-guard.sh" } ] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Edit|Write|Bash", "hooks": [ { "type": "command", "command": "$HOME/.claude/hooks/agentmd-guard.sh" } ] },
+      { "matcher": "Edit|Write|Bash", "hooks": [ { "type": "command", "command": "$HOME/.claude/hooks/verify-touch.sh" } ] },
+      { "matcher": "Bash", "hooks": [ { "type": "command", "command": "HOOK_IN=\"$(cat)\" python3 $HOME/.claude/hooks/longproc-bash-notify.py" } ] }
+    ],
+    "SubagentStart": [
+      { "matcher": "*", "hooks": [ { "type": "command", "command": "HOOK_IN=\"$(cat)\" python3 $HOME/.claude/hooks/longproc-subagent-start.py" } ] }
+    ],
+    "SubagentStop": [
+      { "matcher": "*", "hooks": [ { "type": "command", "command": "HOOK_IN=\"$(cat)\" python3 $HOME/.claude/hooks/longproc-subagent-stop.py" } ] }
+    ],
+    "Stop": [
+      { "matcher": "*", "hooks": [ { "type": "command", "command": "$HOME/.claude/hooks/loop-record.sh" } ] },
+      { "matcher": "*", "hooks": [ { "type": "command", "command": "HOOK_IN=\"$(cat)\" python3 $HOME/.claude/hooks/longproc-stop-flush.py" } ] }
+    ],
+    "StopFailure": [
+      { "hooks": [ { "type": "command", "command": "$HOME/.claude/hooks/reply-failure-notify.sh" } ] }
     ]
   }
 }
